@@ -1,0 +1,382 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+
+    <material name="white">
+        <color rgba="1 1 1 1" />
+    </material>
+
+    <material name="orange">
+        <color rgba="1 0.3 0.1 1" />
+    </material>
+
+    <material name="blue">
+        <color rgba="0.2 0.2 1 1" />
+    </material>
+
+    <material name="black">
+        <color rgba="0 0 0 1" />
+    </material>
+
+
+    <link 
+    name="base_link">
+        <inertial>
+            <origin
+                xyz="-0.002019 0.00063423 0.040071"
+                rpy="0 0 0" />
+            <mass
+                value="0.59099" />
+            <inertia
+                ixx="0.0010717"
+                ixy="-1.8314E-09"
+                ixz="3.7208E-05"
+                iyy="0.0012774"
+                iyz="-2.0501E-06"
+                izz="0.0021985" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="package://rosbot/description/meshes/base_link.STL" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.79216 0.81961 0.93333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="package://rosbot/description/meshes/base_link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <link
+        name="fl_wheel_Link">
+        <inertial>
+            <origin
+                xyz="9.48134959433133E-10 3.96555375342666E-10 0.00153990823052402"
+                rpy="0 0 0" />
+            <mass
+                value="0.0351743525307397" />
+            <inertia
+                ixx="1.52369664732543E-05"
+                ixy="-4.96523891974569E-10"
+                ixz="-1.83309411685179E-13"
+                iyy="1.52369413922818E-05"
+                iyz="8.35183314206423E-15"
+                izz="2.57855729806572E-05" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="package://rosbot/description/meshes/fl_wheel_Link.STL" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="package://rosbot/description/meshes/fl_wheel_Link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint
+        name="fl_wheel_joint"
+        type="continuous">
+        <origin
+            xyz="0.054819 0.11375 0.0125"
+            rpy="1.5708 0 0" />
+        <parent
+            link="base_link" />
+        <child
+            link="fl_wheel_Link" />
+        <axis
+            xyz="0 0 1" />
+    </joint>
+    <link
+        name="bl_wheel_Link">
+        <inertial>
+            <origin
+                xyz="7.75651570750213E-10 4.27539222774831E-10 0.00153990809638857"
+                rpy="0 0 0" />
+            <mass
+                value="0.0351743518686018" />
+            <inertia
+                ixx="1.52369452824071E-05"
+                ixy="-4.96633867792555E-10"
+                ixz="-1.16359040515582E-13"
+                iyy="1.52369620353821E-05"
+                iyz="1.25504882962427E-14"
+                izz="2.57855724455867E-05" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="package://rosbot/description/meshes/bl_wheel_Link.STL" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="package://rosbot/description/meshes/bl_wheel_Link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint
+        name="bl_wheel_joint"
+        type="continuous">
+        <origin
+            xyz="-0.064819 0.11375 0.0125"
+            rpy="1.5708 0 0" />
+        <parent
+            link="base_link" />
+        <child
+            link="bl_wheel_Link" />
+        <axis
+            xyz="0 0 1" />
+    </joint>
+    <link
+        name="fr_wheel_Link">
+        <inertial>
+            <origin
+                xyz="-2.21104246023174E-10 -7.2173080359339E-10 0.00153990830645513"
+                rpy="0 0 0" />
+            <mass
+                value="0.0351743525851942" />
+            <inertia
+                ixx="1.52368217807294E-05"
+                ixy="-4.78967548245282E-10"
+                ixz="1.3714121636048E-13"
+                iyy="1.52370860963441E-05"
+                iyz="-2.12345782810308E-14"
+                izz="2.57855729883382E-05" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="package://rosbot/description/meshes/fr_wheel_Link.STL" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="package://rosbot/description/meshes/fr_wheel_Link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint
+        name="fr_wheel_joint"
+        type="continuous">
+        <origin
+            xyz="0.054819 -0.11375 0.0125"
+            rpy="-1.5708 0 0" />
+        <parent
+            link="base_link" />
+        <child
+            link="fr_wheel_Link" />
+        <axis
+            xyz="0 0 -1" />
+    </joint>
+    <link
+        name="br_wheel_Link">
+        <inertial>
+            <origin
+                xyz="-7.51510770280461E-10 -5.34146959302317E-10 0.00153990814047957"
+                rpy="0 0 0" />
+            <mass
+                value="0.0351743514576962" />
+            <inertia
+                ixx="1.52367377873145E-05"
+                ixy="-4.47554673306379E-10"
+                ixz="1.24602974090607E-13"
+                iyy="1.52371692334741E-05"
+                iyz="-7.68776346498978E-14"
+                izz="2.57855721604541E-05" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="package://rosbot/description/meshes/br_wheel_Link.STL" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="package://rosbot/description/meshes/br_wheel_Link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint
+        name="br_wheel_joint"
+        type="continuous">
+        <origin
+            xyz="-0.064819 -0.11375 0.0125"
+            rpy="-1.5708 0 0" />
+        <parent
+            link="base_link" />
+        <child
+            link="br_wheel_Link" />
+        <axis
+            xyz="0 0 -1" />
+    </joint>
+    <link
+        name="lidar_Link">
+        <inertial>
+            <origin
+                xyz="-0.000565454433332058 -1.49381448587009E-05 0.000698548059414078"
+                rpy="0 0 0" />
+            <mass
+                value="0.165382751635991" />
+            <inertia
+                ixx="7.88651836105336E-05"
+                ixy="4.84717640921056E-08"
+                ixz="2.1847944395981E-06"
+                iyy="7.51902914938723E-05"
+                iyz="2.88601572510562E-08"
+                izz="0.000109946753058707" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="package://rosbot/description/meshes/lidar_Link.STL" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.752941176470588 0.752941176470588 0.752941176470588 0.4" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="package://rosbot/description/meshes/lidar_Link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint
+        name="lidar_joint"
+        type="continuous">
+        <origin
+            xyz="-0.018669 0 0.12124"
+            rpy="0 0 0" />
+        <parent
+            link="base_link" />
+        <child
+            link="lidar_Link" />
+        <axis
+            xyz="0 0 1" />
+    </joint>
+    <link
+        name="camera_Link">
+        <inertial>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <mass
+                value="0" />
+            <inertia
+                ixx="0"
+                ixy="0"
+                ixz="0"
+                iyy="0"
+                iyz="0"
+                izz="0" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="package://rosbot/description/meshes/camera_Link.STL" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="1 1 1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="package://rosbot/description/meshes/camera_Link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint
+        name="camera_joint"
+        type="fixed">
+        <origin
+            xyz="0.0882272727272727 -0.000100000000000054 0.0820596904532375"
+            rpy="0 0 0" />
+        <parent
+            link="base_link" />
+        <child
+            link="camera_Link" />
+        <axis
+            xyz="0 0 0" />
+    </joint>
+
+
+</robot>

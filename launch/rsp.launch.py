@@ -1,24 +1,24 @@
 import os
-
 from ament_index_python.packages import get_package_share_directory
-
 from launch import LaunchDescription
 from launch.substitutions import LaunchConfiguration
 from launch.actions import DeclareLaunchArgument
 from launch_ros.actions import Node
-
 import xacro
 
-
 def generate_launch_description():
-
     # Check if we're told to use sim time
     use_sim_time = LaunchConfiguration('use_sim_time')
-
+    
     # Process the URDF file
     pkg_path = os.path.join(get_package_share_directory('rosbot'))
     xacro_file = os.path.join(pkg_path,'description','rosbot.urdf.xacro')
-    robot_description_config = xacro.process_file(xacro_file)
+    
+    # Create mesh path for Gazebo Harmonic compatibility
+    mesh_path = f"file://{pkg_path}/description/meshes/"
+    
+    # Process xacro with mesh_path parameter for Gazebo compatibility
+    robot_description_config = xacro.process_file(xacro_file, mappings={'mesh_path': mesh_path})
     
     # Create a robot_state_publisher node
     params = {'robot_description': robot_description_config.toxml(), 'use_sim_time': use_sim_time}
@@ -28,14 +28,12 @@ def generate_launch_description():
         output='screen',
         parameters=[params]
     )
-
-
+    
     # Launch!
     return LaunchDescription([
         DeclareLaunchArgument(
             'use_sim_time',
             default_value='false',
             description='Use sim time if true'),
-
         node_robot_state_publisher
     ])

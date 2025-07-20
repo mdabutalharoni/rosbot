@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <gazebo>
+        <plugin name="ros2_diff_drive" filename="libros_gz_diff_drive_system.so">
+            <left_joint>fl_wheel_joint</left_joint>
+            <right_joint>fr_wheel_joint</right_joint>
+            <wheel_separation>0.2275</wheel_separation>
+            <wheel_radius>0.0125</wheel_radius>
+            <odometry_frame>odom</odometry_frame>
+            <robot_base_frame>base_link</robot_base_frame>
+            <topic>cmd_vel</topic>
+            <odometry_topic>odom</odometry_topic>
+            <publish_odom>true</publish_odom>
+            <publish_tf>true</publish_tf>
+        </plugin>
+    </gazebo>
+
+
+</robot>

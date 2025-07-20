@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
+    <xacro:arg name="mesh_path" default="${mesh_path}" />
+    <xacro:property name="mesh_path" value="$(arg mesh_path)" />
 
     <material name="white">
         <color rgba="1 1 1 1" />
@@ -19,8 +21,8 @@
     </material>
 
 
-    <link 
-    name="base_link">
+    <link
+        name="base_link">
         <inertial>
             <origin
                 xyz="-0.002019 0.00063423 0.040071"
@@ -41,13 +43,12 @@
                 rpy="0 0 0" />
             <geometry>
                 <mesh
-                    filename="package://rosbot/description/meshes/base_link.STL" />
+                    filename="${mesh_path}base_link.STL" />
             </geometry>
-            <material
-                name="">
-                <color
-                    rgba="0.79216 0.81961 0.93333 1" />
+            <material name="white">
+                <color rgba="1 1 1 1" />
             </material>
+
         </visual>
         <collision>
             <origin
@@ -55,7 +56,7 @@
                 rpy="0 0 0" />
             <geometry>
                 <mesh
-                    filename="package://rosbot/description/meshes/base_link.STL" />
+                    filename="${mesh_path}base_link.STL" />
             </geometry>
         </collision>
     </link>
@@ -81,12 +82,10 @@
                 rpy="0 0 0" />
             <geometry>
                 <mesh
-                    filename="package://rosbot/description/meshes/fl_wheel_Link.STL" />
+                    filename="${mesh_path}fl_wheel_Link.STL" />
             </geometry>
-            <material
-                name="">
-                <color
-                    rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+            <material name="black">
+                <color rgba="0 0 0 1" />
             </material>
         </visual>
         <collision>
@@ -95,7 +94,7 @@
                 rpy="0 0 0" />
             <geometry>
                 <mesh
-                    filename="package://rosbot/description/meshes/fl_wheel_Link.STL" />
+                    filename="${mesh_path}fl_wheel_Link.STL" />
             </geometry>
         </collision>
     </link>
@@ -134,12 +133,10 @@
                 rpy="0 0 0" />
             <geometry>
                 <mesh
-                    filename="package://rosbot/description/meshes/bl_wheel_Link.STL" />
+                    filename="${mesh_path}bl_wheel_Link.STL" />
             </geometry>
-            <material
-                name="">
-                <color
-                    rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+            <material name="black">
+                <color rgba="0 0 0 1" />
             </material>
         </visual>
         <collision>
@@ -148,7 +145,7 @@
                 rpy="0 0 0" />
             <geometry>
                 <mesh
-                    filename="package://rosbot/description/meshes/bl_wheel_Link.STL" />
+                    filename="${mesh_path}bl_wheel_Link.STL" />
             </geometry>
         </collision>
     </link>
@@ -187,12 +184,10 @@
                 rpy="0 0 0" />
             <geometry>
                 <mesh
-                    filename="package://rosbot/description/meshes/fr_wheel_Link.STL" />
+                    filename="${mesh_path}fr_wheel_Link.STL" />
             </geometry>
-            <material
-                name="">
-                <color
-                    rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+            <material name="black">
+                <color rgba="0 0 0 1" />
             </material>
         </visual>
         <collision>
@@ -201,7 +196,7 @@
                 rpy="0 0 0" />
             <geometry>
                 <mesh
-                    filename="package://rosbot/description/meshes/fr_wheel_Link.STL" />
+                    filename="${mesh_path}fr_wheel_Link.STL" />
             </geometry>
         </collision>
     </link>
@@ -240,12 +235,10 @@
                 rpy="0 0 0" />
             <geometry>
                 <mesh
-                    filename="package://rosbot/description/meshes/br_wheel_Link.STL" />
+                    filename="${mesh_path}br_wheel_Link.STL" />
             </geometry>
-            <material
-                name="">
-                <color
-                    rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+            <material name="black">
+                <color rgba="0 0 0 1" />
             </material>
         </visual>
         <collision>
@@ -254,7 +247,7 @@
                 rpy="0 0 0" />
             <geometry>
                 <mesh
-                    filename="package://rosbot/description/meshes/br_wheel_Link.STL" />
+                    filename="${mesh_path}br_wheel_Link.STL" />
             </geometry>
         </collision>
     </link>
@@ -293,13 +286,12 @@
                 rpy="0 0 0" />
             <geometry>
                 <mesh
-                    filename="package://rosbot/description/meshes/lidar_Link.STL" />
+                    filename="${mesh_path}lidar_Link.STL" />
             </geometry>
-            <material
-                name="">
-                <color
-                    rgba="0.752941176470588 0.752941176470588 0.752941176470588 0.4" />
+            <material name="light_purple">
+                <color rgba="0.8 0.6 1.0 1" />
             </material>
+
         </visual>
         <collision>
             <origin
@@ -307,7 +299,7 @@
                 rpy="0 0 0" />
             <geometry>
                 <mesh
-                    filename="package://rosbot/description/meshes/lidar_Link.STL" />
+                    filename="${mesh_path}lidar_Link.STL" />
             </geometry>
         </collision>
     </link>
@@ -346,13 +338,12 @@
                 rpy="0 0 0" />
             <geometry>
                 <mesh
-                    filename="package://rosbot/description/meshes/camera_Link.STL" />
+                    filename="${mesh_path}camera_Link.STL" />
             </geometry>
-            <material
-                name="">
-                <color
-                    rgba="1 1 1 1" />
+            <material name="light_green">
+                <color rgba="0.6 1.0 0.6 1" />
             </material>
+
         </visual>
         <collision>
             <origin
@@ -360,7 +351,7 @@
                 rpy="0 0 0" />
             <geometry>
                 <mesh
-                    filename="package://rosbot/description/meshes/camera_Link.STL" />
+                    filename="${mesh_path}camera_Link.STL" />
             </geometry>
         </collision>
     </link>
@@ -377,6 +368,5 @@
         <axis
             xyz="0 0 0" />
     </joint>
-
 
 </robot>

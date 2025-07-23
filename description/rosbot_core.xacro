@@ -20,9 +20,21 @@
         <color rgba="0 0 0 1" />
     </material>
 
+    <!-- Base footprint - virtual link on the ground plane -->
+    <link name="base_footprint">
+        <!-- No inertial, visual, or collision properties needed -->
+    </link>
+
+    <!-- Joint connecting base_footprint to base_link -->
+    <joint name="base_footprint_joint" type="fixed">
+        <origin xyz="0 0 0.015" rpy="0 0 0" />  <!-- Adjust Z based on your wheel radius -->
+        <parent link="base_footprint" />
+        <child link="base_link" />
+    </joint>
 
     <link
         name="base_link">
+
         <inertial>
             <origin
                 xyz="-0.002019 0.00063423 0.040071"
@@ -60,6 +72,8 @@
             </geometry>
         </collision>
     </link>
+
+
     <link
         name="fl_wheel_Link">
         <inertial>
@@ -111,57 +125,7 @@
         <axis
             xyz="0 0 1" />
     </joint>
-    <link
-        name="bl_wheel_Link">
-        <inertial>
-            <origin
-                xyz="7.75651570750213E-10 4.27539222774831E-10 0.00153990809638857"
-                rpy="0 0 0" />
-            <mass
-                value="0.0351743518686018" />
-            <inertia
-                ixx="1.52369452824071E-05"
-                ixy="-4.96633867792555E-10"
-                ixz="-1.16359040515582E-13"
-                iyy="1.52369620353821E-05"
-                iyz="1.25504882962427E-14"
-                izz="2.57855724455867E-05" />
-        </inertial>
-        <visual>
-            <origin
-                xyz="0 0 0"
-                rpy="0 0 0" />
-            <geometry>
-                <mesh
-                    filename="${mesh_path}bl_wheel_Link.STL" />
-            </geometry>
-            <material name="black">
-                <color rgba="0 0 0 1" />
-            </material>
-        </visual>
-        <collision>
-            <origin
-                xyz="0 0 0"
-                rpy="0 0 0" />
-            <geometry>
-                <mesh
-                    filename="${mesh_path}bl_wheel_Link.STL" />
-            </geometry>
-        </collision>
-    </link>
-    <joint
-        name="bl_wheel_joint"
-        type="continuous">
-        <origin
-            xyz="-0.064819 0.11375 0.0125"
-            rpy="1.5708 0 0" />
-        <parent
-            link="base_link" />
-        <child
-            link="bl_wheel_Link" />
-        <axis
-            xyz="0 0 1" />
-    </joint>
+
     <link
         name="fr_wheel_Link">
         <inertial>
@@ -213,6 +177,61 @@
         <axis
             xyz="0 0 -1" />
     </joint>
+
+
+    <link
+        name="bl_wheel_Link">
+        <inertial>
+            <origin
+                xyz="7.75651570750213E-10 4.27539222774831E-10 0.00153990809638857"
+                rpy="0 0 0" />
+            <mass
+                value="0.0351743518686018" />
+            <inertia
+                ixx="1.52369452824071E-05"
+                ixy="-4.96633867792555E-10"
+                ixz="-1.16359040515582E-13"
+                iyy="1.52369620353821E-05"
+                iyz="1.25504882962427E-14"
+                izz="2.57855724455867E-05" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="${mesh_path}bl_wheel_Link.STL" />
+            </geometry>
+            <material name="black">
+                <color rgba="0 0 0 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="${mesh_path}bl_wheel_Link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint
+        name="bl_wheel_joint"
+        type="continuous">
+        <origin
+            xyz="-0.064819 0.11375 0.0125"
+            rpy="1.5708 0 0" />
+        <parent
+            link="base_link" />
+        <child
+            link="bl_wheel_Link" />
+        <axis
+            xyz="0 0 1" />
+    </joint>
+
+
     <link
         name="br_wheel_Link">
         <inertial>
@@ -264,7 +283,9 @@
         <axis
             xyz="0 0 -1" />
     </joint>
-    <link
+
+
+    <!-- <link
         name="lidar_Link">
         <inertial>
             <origin
@@ -315,8 +336,10 @@
             link="lidar_Link" />
         <axis
             xyz="0 0 1" />
-    </joint>
-    <link
+    </joint> -->
+
+
+    <!-- <link
         name="camera_Link">
         <inertial>
             <origin
@@ -367,6 +390,6 @@
             link="camera_Link" />
         <axis
             xyz="0 0 0" />
-    </joint>
+    </joint> -->
 
 </robot>

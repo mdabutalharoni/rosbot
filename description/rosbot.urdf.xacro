@@ -2,7 +2,7 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro"  name="robot">
 
     <xacro:include filename="rosbot_core.xacro" />
-    <xacro:include filename="rosbot_control.xacro" />
+    <!-- <xacro:include filename="rosbot_control.xacro" /> -->
 
 
 </robot>

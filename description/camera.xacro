@@ -1,0 +1,65 @@
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:property name="mesh_path" value="$(find rosbot)/description/meshes" />
+  <xacro:arg name="sim_mode" default="true" />
+
+  <link name="camera_Link">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.01" /> <!-- small mass for stability -->
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="${mesh_path}/camera_Link.STL" />
+      </geometry>
+      <material name="light_green">
+        <color rgba="0.6 1.0 0.6 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="${mesh_path}/camera_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="camera_joint" type="fixed">
+    <origin xyz="0.0882 -0.0001 0.082" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="camera_Link" />
+  </joint>
+
+  <link name="camera_Link_optical" />
+
+  <joint name="camera_optical_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}" />
+    <parent link="camera_Link" />
+    <child link="camera_Link_optical" />
+  </joint>
+
+  <gazebo reference="camera_Link">
+    <material>Gazebo/Black</material>
+    <sensor name="camera" type="camera">
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>true</visualize>
+      <update_rate>10</update_rate>
+      <camera>
+        <horizontal_fov>1.089</horizontal_fov>
+        <image>
+          <format>R8G8B8</format>
+          <width>640</width>
+          <height>480</height>
+        </image>
+        <clip>
+          <near>0.05</near> <!-- ✅ must be > 0 -->
+          <far>8.0</far>
+        </clip>
+      </camera>
+      <topic>camera/image_raw</topic>
+    </sensor>
+  </gazebo>
+
+</robot>

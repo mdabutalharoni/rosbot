@@ -1,9 +1,8 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-    <xacro:arg name="mesh_path" default="${mesh_path}" />
-    <xacro:property name="mesh_path" value="$(arg mesh_path)" />
-
+    <xacro:property name="mesh_path" value="$(find rosbot)/description/meshes" />
+    <xacro:arg name="sim_mode" default="true" />
     <material name="white">
         <color rgba="1 1 1 1" />
     </material>
@@ -27,7 +26,7 @@
 
     <!-- Joint connecting base_footprint to base_link -->
     <joint name="base_footprint_joint" type="fixed">
-        <origin xyz="0 0 0.015" rpy="0 0 0" />  <!-- Adjust Z based on your wheel radius -->
+        <origin xyz="0 0 0.0325" rpy="0 0 0" />  <!-- Adjust Z based on your wheel radius -->
         <parent link="base_footprint" />
         <child link="base_link" />
     </joint>
@@ -55,7 +54,7 @@
                 rpy="0 0 0" />
             <geometry>
                 <mesh
-                    filename="${mesh_path}base_link.STL" />
+                    filename="${mesh_path}/base_link.STL" />
             </geometry>
             <material name="white">
                 <color rgba="1 1 1 1" />
@@ -68,7 +67,7 @@
                 rpy="0 0 0" />
             <geometry>
                 <mesh
-                    filename="${mesh_path}base_link.STL" />
+                    filename="${mesh_path}/base_link.STL" />
             </geometry>
         </collision>
     </link>
@@ -96,7 +95,7 @@
                 rpy="0 0 0" />
             <geometry>
                 <mesh
-                    filename="${mesh_path}fl_wheel_Link.STL" />
+                    filename="${mesh_path}/fl_wheel_Link.STL" />
             </geometry>
             <material name="black">
                 <color rgba="0 0 0 1" />
@@ -108,7 +107,7 @@
                 rpy="0 0 0" />
             <geometry>
                 <mesh
-                    filename="${mesh_path}fl_wheel_Link.STL" />
+                    filename="${mesh_path}/fl_wheel_Link.STL" />
             </geometry>
         </collision>
     </link>
@@ -116,7 +115,7 @@
         name="fl_wheel_joint"
         type="continuous">
         <origin
-            xyz="0.054819 0.11375 0.0125"
+            xyz="0.054819 0.11375 0.0325"
             rpy="1.5708 0 0" />
         <parent
             link="base_link" />
@@ -148,7 +147,7 @@
                 rpy="0 0 0" />
             <geometry>
                 <mesh
-                    filename="${mesh_path}fr_wheel_Link.STL" />
+                    filename="${mesh_path}/fr_wheel_Link.STL" />
             </geometry>
             <material name="black">
                 <color rgba="0 0 0 1" />
@@ -160,7 +159,7 @@
                 rpy="0 0 0" />
             <geometry>
                 <mesh
-                    filename="${mesh_path}fr_wheel_Link.STL" />
+                    filename="${mesh_path}/fr_wheel_Link.STL" />
             </geometry>
         </collision>
     </link>
@@ -168,7 +167,7 @@
         name="fr_wheel_joint"
         type="continuous">
         <origin
-            xyz="0.054819 -0.11375 0.0125"
+            xyz="0.054819 -0.11375 0.0325"
             rpy="-1.5708 0 0" />
         <parent
             link="base_link" />
@@ -201,7 +200,7 @@
                 rpy="0 0 0" />
             <geometry>
                 <mesh
-                    filename="${mesh_path}bl_wheel_Link.STL" />
+                    filename="${mesh_path}/bl_wheel_Link.STL" />
             </geometry>
             <material name="black">
                 <color rgba="0 0 0 1" />
@@ -213,7 +212,7 @@
                 rpy="0 0 0" />
             <geometry>
                 <mesh
-                    filename="${mesh_path}bl_wheel_Link.STL" />
+                    filename="${mesh_path}/bl_wheel_Link.STL" />
             </geometry>
         </collision>
     </link>
@@ -221,7 +220,7 @@
         name="bl_wheel_joint"
         type="continuous">
         <origin
-            xyz="-0.064819 0.11375 0.0125"
+            xyz="-0.064819 0.11375 0.0325"
             rpy="1.5708 0 0" />
         <parent
             link="base_link" />
@@ -254,7 +253,7 @@
                 rpy="0 0 0" />
             <geometry>
                 <mesh
-                    filename="${mesh_path}br_wheel_Link.STL" />
+                    filename="${mesh_path}/br_wheel_Link.STL" />
             </geometry>
             <material name="black">
                 <color rgba="0 0 0 1" />
@@ -266,7 +265,7 @@
                 rpy="0 0 0" />
             <geometry>
                 <mesh
-                    filename="${mesh_path}br_wheel_Link.STL" />
+                    filename="${mesh_path}/br_wheel_Link.STL" />
             </geometry>
         </collision>
     </link>
@@ -274,7 +273,7 @@
         name="br_wheel_joint"
         type="continuous">
         <origin
-            xyz="-0.064819 -0.11375 0.0125"
+            xyz="-0.064819 -0.11375 0.0325"
             rpy="-1.5708 0 0" />
         <parent
             link="base_link" />
@@ -307,7 +306,7 @@
                 rpy="0 0 0" />
             <geometry>
                 <mesh
-                    filename="${mesh_path}lidar_Link.STL" />
+                    filename="${mesh_path}/lidar_Link.STL" />
             </geometry>
             <material name="light_purple">
                 <color rgba="0.8 0.6 1.0 1" />
@@ -320,7 +319,7 @@
                 rpy="0 0 0" />
             <geometry>
                 <mesh
-                    filename="${mesh_path}lidar_Link.STL" />
+                    filename="${mesh_path}/lidar_Link.STL" />
             </geometry>
         </collision>
     </link>
@@ -361,7 +360,7 @@
                 rpy="0 0 0" />
             <geometry>
                 <mesh
-                    filename="${mesh_path}camera_Link.STL" />
+                    filename="${mesh_path}/camera_Link.STL" />
             </geometry>
             <material name="light_green">
                 <color rgba="0.6 1.0 0.6 1" />
@@ -374,7 +373,7 @@
                 rpy="0 0 0" />
             <geometry>
                 <mesh
-                    filename="${mesh_path}camera_Link.STL" />
+                    filename="${mesh_path}/camera_Link.STL" />
             </geometry>
         </collision>
     </link>

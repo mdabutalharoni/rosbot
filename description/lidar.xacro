@@ -1,0 +1,60 @@
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:property name="mesh_path" value="$(find rosbot)/description/meshes" />
+    <xacro:arg name="sim_mode" default="true" />
+
+    <link name="lidar_Link">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <mass value="0.01" />
+            <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="${mesh_path}/lidar_Link.STL" />
+            </geometry>
+            <material name="light_purple">
+                <color rgba="0.8 0.6 1.0 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="${mesh_path}/lidar_Link.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="lidar_joint" type="continuous">
+        <origin xyz="-0.018669 0 0.12124" rpy="0 0 0" />
+        <parent link="base_link" />
+        <child link="lidar_Link" />
+        <axis xyz="0 0 1" />
+    </joint>
+
+    <gazebo reference="lidar_Link">
+        <material>Gazebo/Black</material>
+        <sensor name="laser" type="gpu_ray">
+            <pose>0 0 0 0 0 0</pose>
+            <visualize>true</visualize>
+            <update_rate>10</update_rate>
+            <ray>
+                <scan>
+                    <horizontal>
+                        <samples>360</samples>
+                        <min_angle>-3.14</min_angle>
+                        <max_angle>3.14</max_angle>
+                    </horizontal>
+                </scan>
+                <range>
+                    <min>0.05</min>
+                    <max>10.0</max>
+                </range>
+            </ray>
+            <topic>scan</topic>
+        </sensor>
+
+    </gazebo>
+
+</robot>
